@@ -178,6 +178,7 @@ export default function Item({ service, groupName, useEqualHeights }) {
                     node: service.proxmoxNode,
                     vmid: service.proxmoxVMID,
                     type: service.proxmoxType,
+                    stats: service.proxmoxStats
                   },
                 }}
               />

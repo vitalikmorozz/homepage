@@ -73,7 +73,12 @@ export default async function handler(req, res) {
     return res.status(200).json({
       status: parsedData.data.status || "unknown",
       cpu: parsedData.data.cpu,
+      cpus: parsedData.data.cpus,
       mem: parsedData.data.mem,
+      maxMem: parsedData.data.maxmem,
+      disk: parsedData.data.disk,
+      maxDisk: parsedData.data.maxdisk,
+      uptime: parsedData.data.uptime,
     });
   } catch (error) {
     logger.error("Error fetching Proxmox status:", error);

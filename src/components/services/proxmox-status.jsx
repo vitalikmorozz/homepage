@@ -5,6 +5,7 @@ export default function ProxmoxStatus({ service, style }) {
   const { t } = useTranslation();
 
   const vmType = service.proxmoxType || "qemu";
+  const showType = service.proxmoxStats?.type ?? false;
   const apiUrl = `/api/proxmox/stats/${service.proxmoxNode}/${service.proxmoxVMID}?type=${vmType}`;
 
   const { data, error } = useSWR(apiUrl);
@@ -56,7 +57,7 @@ export default function ProxmoxStatus({ service, style }) {
       title={statusLabel}
     >
       {style !== "dot" ? (
-        <div className={`text-[8px] font-bold ${colorClass} uppercase`}>{statusLabel}</div>
+        <div className={`text-[8px] font-bold ${colorClass} uppercase`}>{statusLabel}{showType ? ` / ${vmType}` : ''}</div>
       ) : (
         <div className={`rounded-full h-3 w-3 ${colorClass}`} />
       )}
